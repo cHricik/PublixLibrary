@@ -1,0 +1,6 @@
+C:\Users\Dojima\source\repos\Solution3\PF.Publix.Bookstore.DataAccess,SQL\bin\Debug\PF.Publix.Bookstore.DataAccess,SQL.dll
+C:\Users\Dojima\source\repos\Solution3\PF.Publix.Bookstore.DataAccess,SQL\bin\Debug\PF.Publix.Bookstore.DataAccess,SQL.pdb
+C:\Users\Dojima\source\repos\Solution3\PF.Publix.Bookstore.DataAccess,SQL\obj\Debug\PF.Publix.Bookstore.DataAccess,SQL.csprojAssemblyReference.cache
+C:\Users\Dojima\source\repos\Solution3\PF.Publix.Bookstore.DataAccess,SQL\obj\Debug\PF.Publix.Bookstore.DataAccess,SQL.csproj.CoreCompileInputs.cache
+C:\Users\Dojima\source\repos\Solution3\PF.Publix.Bookstore.DataAccess,SQL\obj\Debug\PF.Publix.Bookstore.DataAccess,SQL.dll
+C:\Users\Dojima\source\repos\Solution3\PF.Publix.Bookstore.DataAccess,SQL\obj\Debug\PF.Publix.Bookstore.DataAccess,SQL.pdb
