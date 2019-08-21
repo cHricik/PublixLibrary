@@ -1,0 +1,94 @@
+﻿
+@model WebApplication1.Models.BookModel
+
+@{
+
+    ViewBag.Title = "ListBooks";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>ListBooks</h2>
+
+<h3>Add Book to the Library</h3>
+
+@Html.ValidationSummary()
+
+@if (!String.IsNullOrEmpty(ViewBag.Message))
+{
+    <div class="alert alert-info">@Html.Raw(ViewBag.Message)</div>
+}
+
+@using (Html.BeginForm("ListBooks", "Home", null, FormMethod.Post, new { @class = "form" }))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Title, new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Author, new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.Author, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Cost, new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.Cost, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Publisher, new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.Publisher, new { @class = "form-control" })
+        <div class="small-text">(Enter a new publisher here)</div>
+    </div>
+    <div class="form-group">
+        <label class="control-label">Existing Publisher:</label>
+        @Html.DropDownListFor(m => m.Publisher, ViewData["Publisher"] as SelectList, String.Empty, new { @class = "form-control" })
+    </div>
+
+
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-default">Save Changes</button>
+    </div>
+}
+
+<h2>Books in Library</h2>
+<p>
+    There are @Html.Raw((ViewData["Library"] as Array).Length) books in your library:
+</p>
+
+<table class="table table-condensed">
+    <thead>
+        <tr>
+            <th>Edits</th>
+            <th>Delete</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Publisher</th>
+            <th>Cost</th>
+            <th>AddedON</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in (ViewData["Library"] as IEnumerable<WebApplication1.EntityFramework.PublixLibrary>))
+        {
+        <tr>
+        <td>@Html.ActionLink("Edit", "EditBook", "Home", new { bookId = book.Id}, new { @class = "edit-link publix-green" })</td>
+        <td>@Html.ActionLink("Delete", "DeleteBook", "Home", new { bookTitle = book.Title }, new { @class = "delete-link" })</td>
+        <td>@Html.Raw(book.Title)</td>
+        <td>@Html.Raw(book.Author)</td>
+        <td>@Html.Raw(book.Publisher)</td>
+        <td>@Html.Raw(book.Price)</td>
+        <td>@book.AddedON.ToString("yyyy MM dd hh:mm tt")</td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+@section scripts {
+    <script type="text/javascript">
+     $(document).ready(function () {
+         $('.delete-link').on('click', function () {
+             return confirm('Are you sure you want to delete this item?\n Click [Ok] to delete, [Cancel] to return without deleting.');
+         });
+     });
+    </script>
+}
